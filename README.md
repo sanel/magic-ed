@@ -29,7 +29,22 @@ nothing.
 In background, *magic-ed* will use *(ed)* standard function but will
 try to obey implementation specific features. For example, on SBCL if
 *sb-ext:\*ed-functions** was set, *magic-ed* will not use environment
-value. 
+value.
+
+If you do not want file to be evaluated, you use **:eval** parameter
+like:
+
+```lisp
+(magic-ed:magic-ed "/tmp/test.lisp" :eval nil)
+```
+
+and file will be only saved. Also, if you would like file content to
+be returned as escaped string, use **:output** parameter (accepts only
+*:file* and *:string*):
+
+```lisp
+(setf content (magic-ed:magic-ed "/tmp/test.lisp" :output :string))
+```
 
 ## Installation
 
