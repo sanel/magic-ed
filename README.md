@@ -67,5 +67,5 @@ The code was tested on SBCL, ECL and Clozure CL.
 
 ## License
 
-Copyright (c) 2013 Sanel Zukan. You can use the code whatever you
+Copyright (c) 2013 Sanel Zukan. You can use this code whatever you
 like.
