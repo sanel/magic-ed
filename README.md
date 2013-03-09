@@ -6,32 +6,32 @@ directly load, edit, manipulate and evaluate file or file content from
 
 I find myself often running REPL for various things but lazy enough to
 engage Emacs/SLIME when I need some small editing work: I'm a UNIX guy
-and I often start vi/vim/emacsclient for writing small throw-away
-programs.
+and I get used to start vi/vim/emacsclient for writing small
+throw-away programs.
 
-This package can be also starting point for people who are not
+This package also can be starting point for people who are not
 accustomed to Emacs or SLIME and would like to continue using their
 editor with Common Lisp.
 
 ## Usage
 
-You simply start it with:
+You start it with:
 
 ```lisp
 (magic-ed:magic-ed "/tmp/test.lisp")
 ```
 
-and it will call function assigned to *EDITOR* environment
-variable. When you are done with editing, save it and quit; *magic-ed*
-will load that file and evaluate it. If save failed, it will do
-nothing.
+and it will start editor assigned to *EDITOR* environment
+variable. When you are done with editing, save it and quit: *magic-ed*
+will load that file and evaluate it. If file saving somehow failed, nothing
+will be evaluated.
 
-In background, *magic-ed* will use *(ed)* standard function but will
-try to obey implementation specific features. For example, on SBCL if
-*sb-ext:\*ed-functions** was set, *magic-ed* will not use environment
-value.
+In background, *magic-ed* will try to use *(ed)* standard function and
+will try to obey implementation specific features. For example, on
+SBCL if *sb-ext:\*ed-functions** was set, *magic-ed* will not use
+environment value.
 
-If you do not want file to be evaluated, you use **:eval** parameter
+If you do not want editing file to be evaluated, you use **:eval** parameter
 like:
 
 ```lisp
@@ -48,8 +48,9 @@ be returned as escaped string, use **:output** parameter (accepts only
 
 ## Installation
 
-First download the code (official release or clone it from repository)
-and run:
+First setup *EDITOR* environment variable to point to your favorite
+editor and download magic-ed code (official release or clone it from
+this repository) and run:
 
 ```lisp
 (asdf:load-system :magic-ed)
@@ -61,9 +62,6 @@ or if you have [Quicklisp](http://www.quicklisp.org):
 ```lisp
 (ql:quickload :magic-ed)
 ```
-
-Then setup *EDITOR* environment variable to point to your favorite
-editor and try to be productive :)
 
 The code was tested on SBCL, ECL and Clozure CL.
 
