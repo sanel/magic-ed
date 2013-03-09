@@ -1,8 +1,8 @@
 (defpackage :magic-ed
-  (:use :cl)
-  (:export :magic-ed)
-  #+sbcl (:use :sb-alien)
-  #+sbcl (:export :system :ed-editor))
+  (:use :cl #+sbcl :sb-alien)
+  (:export :magic-ed
+		   #+sbcl +ccl :ed-editor
+		   #+sbcl :system))
 
 (in-package :magic-ed)
 
@@ -57,6 +57,17 @@
 
   ;; save it
   (push 'ed-editor sb-ext:*ed-functions*))
+
+#+ccl
+(unless ccl:*resident-editor-hook*
+  (defun ed-editor (thing)
+	(let* ((editor (ccl:getenv "EDITOR"))
+		   (editor (or editor "vi")))
+	  (ccl::os-command
+	    (format nil "~A ~A" editor thing))))
+
+  ;; set it
+  (setf ccl:*resident-editor-hook* 'ed-editor))
 
 (defun magic-ed (&optional file &key (output :file) (eval t))
   "Call editor from REPL and depending on options, return to REPL or evaluate file content in repl.

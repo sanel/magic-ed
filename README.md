@@ -65,7 +65,7 @@ or if you have [Quicklisp](http://www.quicklisp.org):
 Then setup *EDITOR* environment variable to point to your favorite
 editor and try to be productive :)
 
-This code is tested on SBCL and ECL.
+This code is tested on SBCL, ECL and Clozure CL.
 
 ## License
 

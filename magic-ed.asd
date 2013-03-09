@@ -1,4 +1,4 @@
-(defsystem :magic-ed
+(defsystem magic-ed
   :serial t
   :name "magic-ed"
   :version "0.2"
