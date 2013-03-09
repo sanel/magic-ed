@@ -21,7 +21,12 @@
 ;; SBCL specific thing, stolen from: http://random-state.net/log/3453226588.html
 
 #+sbcl
-(defun namestring-for-vim (thing)
+(defun namestring-for-editor (editor thing)
+  ;; a small function to check if we have editor which have 'editor +line <file>' support
+  (defun known-editor (e)
+	(loop for i in '("vim" "emacs" "emacsclient")
+		  thereis (string= i e)))
+
   (when thing
 	(typecase thing
 	  (pathname
@@ -34,9 +39,9 @@
 			  (offset   (or (sb-introspect:definition-source-character-offset source) 0)))
 		 (unless pathname
 		   (error "Don't know where the definition of ~S is, sorry." thing))
-		 (format nil "-c \"goto ~A\" ~A"
-				 offset
-				 (namestring-for-vim pathname)))))))
+		 (if (known-editor editor)
+		   (format nil "+~A ~A" offset (namestring-for-editor editor pathname))
+		   (format nil "~A" (namestring-for-editor editor pathname)) ))))))
 
 #+sbcl
 (unless sb-ext:*ed-functions*
@@ -48,7 +53,7 @@
 	(let* ((editor (sb-ext:posix-getenv "EDITOR"))
 		   (editor (or editor "vi")))
 	  (system
-	    (format nil "~A~@[ ~A~]" editor (namestring-for-vim thing)))))
+	    (format nil "~A~@[ ~A~]" editor (namestring-for-editor editor thing)))))
 
   ;; save it
   (push 'ed-editor sb-ext:*ed-functions*))
