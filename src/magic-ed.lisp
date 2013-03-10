@@ -6,17 +6,13 @@
 
 (in-package :magic-ed)
 
-(defun slurp-stream (stream)
-  "Slurp stream fast as possible, but preallocating buffer first and reading everything in a single pass."
-  (let* ((len (file-length stream))
-		 (seq (make-string len)))
-	(read-sequence seq stream)
-	seq))
-
 (defun slurp-file (path)
   "Slurp file from given path."
   (with-open-file (stream path)
-    (slurp-stream stream)))
+    (let* ((len (file-length stream))
+		   (seq (make-string len)))
+	  (read-sequence seq stream)
+	  seq)))
 
 ;; SBCL specific thing, stolen from: http://random-state.net/log/3453226588.html
 
@@ -24,8 +20,7 @@
 (defun namestring-for-editor (editor thing)
   ;; a small function to check if we have editor which have 'editor +line <file>' support
   (defun known-editor (e)
-	(loop for i in '("vim" "emacs" "emacsclient")
-		  thereis (string= i e)))
+	(member e '("vim" "emacs" "emacsclient") :test 'string=))
 
   (when thing
 	(typecase thing
