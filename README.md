@@ -5,7 +5,7 @@ directly load, edit, manipulate and evaluate file or file content from
 [REPL](http://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop_).
 
 I find myself often running REPL for various things but lazy enough to
-engage Emacs/SLIME when I need some small editing work: I'm a UNIX guy
+engage Emacs/SLIME when I need a small editing work: I'm a UNIX guy
 and I get used to start vi/vim/emacsclient for writing small
 throw-away programs.
 
@@ -67,5 +67,5 @@ The code was tested on SBCL, ECL and Clozure CL.
 
 ## License
 
-Copyright (c) 2013 Sanel Zukan. You can use this code whatever you
+Copyright (c) 2013-2015 Sanel Zukan. You can use this code whatever you
 like.

@@ -4,5 +4,4 @@
   :version "0.2"
   :description "Edit your code from REPL."
   :depends-on (#+sbcl :sb-introspect)
-  :components
-  ((:file "src/magic-ed")))
+  :components ((:file "src/magic-ed")))
