@@ -86,7 +86,7 @@
            (parts  (funcall split-string editor))
            (editor (first parts))
            (args   (append (rest parts) (when thing
-										  (list thing)))))
+                                          (list thing)))))
       (extensions:run-program editor args :input t :output t)))
   ;; overwrite (ed) with our definition
   (setf (symbol-function 'cl:ed) (symbol-function 'magic-ed:ed-editor)))
