@@ -63,7 +63,7 @@
 ;; TODO: check if Hemlock was set
 #+(or cmu scl)
 (when t
-  (defun ed-editor (thing)
+  (defun ed-editor (&optional thing)
     (let* ((editor (cdr (assoc :EDITOR ext:*environment-list*)))
            (editor (or editor "vi"))
            ;; shamelessly stolen from ASDF
@@ -85,7 +85,8 @@
            ;; move everything else as arguments.
            (parts  (funcall split-string editor))
            (editor (first parts))
-           (args   (append (rest parts) (list thing))))
+           (args   (append (rest parts) (when thing
+										  (list thing)))))
       (extensions:run-program editor args :input t :output t)))
   ;; overwrite (ed) with our definition
   (setf (symbol-function 'cl:ed) (symbol-function 'magic-ed:ed-editor)))
