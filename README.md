@@ -63,7 +63,7 @@ or if you have [Quicklisp](http://www.quicklisp.org):
 (ql:quickload :magic-ed)
 ```
 
-The code was tested on SBCL, ECL and Clozure CL.
+The code was tested on SBCL, ECL, Clozure CL and CMUCL.
 
 ## License
 
