@@ -64,7 +64,9 @@ Download or git clone magic-ed to Your quicklisp directory
 For example, execute in terminal:
 
 `
-git clone https://github.com/sanel/magic-ed ~/quicklisp/local-projects/
+cd ~/quicklisp/local-projects/
+
+git clone https://github.com/sanel/magic-ed 
 `
 
 Then, launch Your lisp of choice and in the REPL: 
