@@ -58,6 +58,19 @@ this repository) and run:
 
 or if you have [Quicklisp](http://www.quicklisp.org):
 
+Download or git clone magic-ed to Your quicklisp directory  
+( usually ~/quicklisp/local-projects/ )
+
+For example, execute in terminal:
+
+`
+cd ~/quicklisp/local-projects/
+
+git clone https://github.com/sanel/magic-ed 
+`
+
+Then, launch Your lisp of choice and in the REPL: 
+
 
 ```lisp
 (ql:quickload :magic-ed)
