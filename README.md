@@ -13,6 +13,19 @@ This package also can be a starting point for people who are not
 accustomed to Emacs or SLIME and would like to continue using their
 default terminal/console editor with Common Lisp.
 
+## Quickinstall and start
+Install via [Quicklisp](http://www.quicklisp.org), which updates distro about once a month.
+```lisp
+(ql:quickload "magic-ed")
+```
+For simple editing from the REPL, launch your system configured EDitor
+```lisp
+(ed "file-name.lisp")
+````
+
+For the daily updates track, install via Ultralisp. You can also install manually.
+See instructions for other installation options and use below. 
+
 ## Usage
 
 You start it with:
@@ -27,8 +40,8 @@ will load that file and evaluate it. If file saving somehow failed, nothing
 will be evaluated. 
 
 In background, *magic-ed* will try to use *(ed)* standard function and
-will try to obey implementation specific features. For example, on
-SBCL if *sb-ext:\*ed-functions** was set, *magic-ed* will not use
+will try to obey implementation specific features. For example, in
+SBCL, if *sb-ext:\*ed-functions** was set, *magic-ed* will not use
 environment value.
 
 If you do not want edited file to be evaluated, you use **:eval** parameter
@@ -46,23 +59,35 @@ be returned as escaped string, use **:output** parameter (accepts only
 (setf content (magic-ed:magic-ed "/tmp/test.lisp" :output :string))
 ```
 
-## Installation
+## Installation options 
 
 First setup *EDITOR* environment variable to point to your favorite
-editor (on *nix, often nano or vi, distribution dependent config and change) and 
-download magic-ed code (official release or clone it from this repository) and run:
+editor (on *nix, often nano or vi, distribution dependent config and change) 
+and download magic-ed code via Quicklisp, Ultralisp, or manually 
+(clone it from this repository).
+
+###  Ultralisp via Quicklisp 
+
+Magic-ed is [available](https://ultralisp.org/projects/sanel/magic-ed) on Ultralisp. 
+Ultralisp updates more often than Quicklisp, so this install is recommended. 
+
+Install [Quicklisp](http://www.quicklisp.org), install [Ultralisp](https://ultralisp.org/).
+Then use the standard Quicklisp installation method. 
+
+### Manual download or via Quicklisp
+
+As given above in the Quickstart, do 
+
+```lisp
+(ql:quickload "magic-ed")
+```
+### ASDF 
 
 ```lisp
 (asdf:load-system :magic-ed)
 ```
-### Install with Ultralisp Via Quicklisp 
+Manual install:
 
-Magic-ed is [available](https://ultralisp.org/projects/sanel/magic-ed) on Ultralisp. 
-Install [Quicklisp](http://www.quicklisp.org), install [Ultralisp](https://ultralisp.org/).
-Then use the standard Quicklisp installation method. 
-
-### Manual download and installation with Quicklisp
-If you have [Quicklisp](http://www.quicklisp.org) only:
 
 Download or git clone magic-ed to Your quicklisp directory manually  
 ( usually ~/quicklisp/local-projects/ )
@@ -96,5 +121,5 @@ In SBCL: edit Your ~/.sbclrc and add to the end, after ql lines:
 The magic-ed code was tested on SBCL, ECL, Clozure CL and CMUCL.
 ## License
 
-Copyright (c) 2013-2019 Sanel Zukan. You can use this code whatever you
-like.
+Copyright (c) 2013-2020 Sanel Zukan. You can use this code however you
+like, in accordance with the MIT license. 
