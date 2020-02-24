@@ -76,9 +76,10 @@ Then use the standard Quicklisp installation method.
 
 ### Manual download or via Quicklisp
 
-As given above in the Quickstart, do 
+Do an update of the QL database and install:
 
 ```lisp
+(ql:update-dist "quicklisp")
 (ql:quickload "magic-ed")
 ```
 ### ASDF 
